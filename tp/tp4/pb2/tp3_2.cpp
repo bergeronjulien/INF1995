@@ -16,7 +16,7 @@
 #define F_CPU 8000000
 #include <util/delay.h>
 
- void delay_ms(unsigned int milliseconds)
+ void delay_ms(int milliseconds)
  {
    while(milliseconds > 0)
    {
@@ -33,42 +33,124 @@ int main()
   	DDRD = 0x00; // PORT D est en mode entree
 
   	PORTB = 0x00;
-	int i = 0;
-	double a = 0;
-	bool ouvert = false;
-
-	const double f60HZ = 1000 / 60;
-	//const double 400HZ = 1 / 400; 
-
-	//enum intensite {
-	//	R0,
-	//	R25,
-	//	R50,
-	//	R75,
-	//	R100
-	//};
-
-	//enum INTENSITE = intensite;
-
-
-	while(i < 600000){
-		if(i % 120000) {
-			a += f60HZ;
-		}
-
-		if(ouvert) {
+	bool ouvert = true;
+	
+	for(int i =0; i < 250; i++) {
+	    if(ouvert) {
 			PORTB = 0x01;
-			delay_ms(a);
+			_delay_ms(0);
 		} else {
 			PORTB = 0x00;
-			delay_ms(f60HZ - a);
+			_delay_ms(16);
 		}
 		ouvert = !ouvert;
-
-		i++;
+	}
+	
+	for(int i =0; i < 250; i++) {
+	    if(ouvert) {
+			PORTB = 0x01;
+			_delay_ms(4);
+		} else {
+			PORTB = 0x00;
+			_delay_ms(12);
+		}
+		ouvert = !ouvert;
+	}
+	
+	for(int i =0; i < 250; i++) {
+	    if(ouvert) {
+			PORTB = 0x01;
+			_delay_ms(8);
+		} else {
+			PORTB = 0x00;
+			_delay_ms(8);
+		}
+		ouvert = !ouvert;
+	}
+	
+	for(int i =0; i < 250; i++) {
+	    if(ouvert) {
+			PORTB = 0x01;
+			_delay_ms(12);
+		} else {
+			PORTB = 0x00;
+			_delay_ms(4);
+		}
+		ouvert = !ouvert;
+	}
+	
+	for(int i =0; i < 250; i++) {
+	    if(ouvert) {
+			PORTB = 0x01;
+			_delay_ms(16);
+		} else {
+			PORTB = 0x00;
+			_delay_ms(0);
+		}
+		ouvert = !ouvert;
+	}
+	
+	
+	
+	
+	
+	for(int i =0; i < 1600; i++) {
+	    if(ouvert) {
+			PORTB = 0x01;
+			_delay_us(0);
+		} else {
+			PORTB = 0x00;
+			_delay_us(2500);
+		}
+		ouvert = !ouvert;
+	}
+	
+	for(int i =0; i < 1600; i++) {
+	    if(ouvert) {
+			PORTB = 0x01;
+			_delay_us(625);
+		} else {
+			PORTB = 0x00;
+			_delay_us(1875);
+		}
+		ouvert = !ouvert;
+	}
+	
+	for(int i =0; i < 1600; i++) {
+	    if(ouvert) {
+			PORTB = 0x01;
+			_delay_us(1250);
+		} else {
+			PORTB = 0x00;
+			_delay_us(1250);
+		}
+		ouvert = !ouvert;
+	}
+	
+	for(int i =0; i < 1600; i++) {
+	    if(ouvert) {
+			PORTB = 0x01;
+			_delay_us(1875);
+		} else {
+			PORTB = 0x00;
+			_delay_us(625);
+		}
+		ouvert = !ouvert;
+	}
+	
+	for(int i =0; i < 1600; i++) {
+	    if(ouvert) {
+			PORTB = 0x01;
+			_delay_us(2500);
+		} else {
+			PORTB = 0x00;
+			_delay_us(0);
+		}
+		ouvert = !ouvert;
 	}
 
-
+	
+    PORTB = 0x00;
 
 
   return 0; 
